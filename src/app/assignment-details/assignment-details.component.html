@@ -1,0 +1,16 @@
+<h2>Assignment Details</h2>
+
+@if (assignment) {
+  <div>
+    <p><strong>ID:</strong> {{ assignment.id }}</p>
+    <p><strong>Title:</strong> {{ assignment.title }}</p>
+    <p><strong>Description:</strong> {{ assignment.description || 'No description' }}</p>
+    <p><strong>Due Date:</strong> {{ assignment.dueDate }}</p>
+    <p><strong>Status:</strong> {{ assignment.status }}</p>
+    <p><strong>Priority:</strong> {{ assignment.priority || 'Not set' }}</p>
+  </div>
+} @else {
+  <p>No assignment selected.</p>
+}
+
+<button (click)="onBack()"> Back to List</button>

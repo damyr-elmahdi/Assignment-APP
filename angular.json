@@ -27,7 +27,14 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css" ,
+              {
+                "input": "src/styles.scss"
+              },
+              {
+                "input": "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              }
+              
             ],
             "scripts": []
           },
@@ -92,5 +99,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
