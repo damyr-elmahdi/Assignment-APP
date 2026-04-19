@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -8,10 +9,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface Assignment {
   id: number;
-  title : string;
+  title: string;
   description?: string;
   dueDate: string;
-  status: 'pending' | 'In progress' | 'Completed';
+  status: 'Pending' | 'In Progress' | 'Completed'; 
   priority?: 'Low' | 'Medium' | 'High';
 }
 
@@ -19,24 +20,25 @@ export interface Assignment {
   providedIn: 'root'
 })
 export class AssignmentService {
-  private assignments: Assignment[] = [
-{    
+  
+private assignments: Assignment[] = [
+  {
     id: 1,
     title: 'Math Homework',
     description: 'Complete exercises 1-10 on page 42',
-    dueDate: '2024-07-01',
-    status: 'pending',
+    dueDate: '2026-04-01',
+    status: 'Pending',        
     priority: 'High'
   },
   {
     id: 2,
     title: 'Science Project',
     description: 'Build a model of the solar system',
-    dueDate: '2024-07-15',
-    status: 'In progress',
+    dueDate: '2026-04-15',
+    status: 'In Progress',    
     priority: 'Medium'
   }
-  ];
+];
 
   private assignmentsSubject = new BehaviorSubject<Assignment[]>(this.assignments);
   
@@ -72,5 +74,6 @@ export class AssignmentService {
 
 
   
-  constructor() { }
+  constructor(
+    private http:HttpClient) { }
 }

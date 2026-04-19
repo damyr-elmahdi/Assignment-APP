@@ -12,7 +12,7 @@ export class AssignmentListComponent {
 @Input( ) assignments: Assignment[] = [];
 
 @Output() viewDetails = new EventEmitter<Assignment>();
-@Output() ViewUpdate = new EventEmitter<Assignment>();
+@Output() viewUpdate = new EventEmitter<Assignment>(); 
 @Output() delete = new EventEmitter<number>();
 @Output() addNew = new EventEmitter<void>(); 
 
@@ -24,8 +24,8 @@ onViewDetails(assignment: Assignment){
   this.viewDetails.emit(assignment);
 }
 
-onViewUpdate(assignment: Assignment){
-  this.viewDetails.emit(assignment);
+onViewUpdate(assignment: Assignment) {
+  this.viewUpdate.emit(assignment); 
 }
 onDelete(id: number){
   this.delete.emit(id);

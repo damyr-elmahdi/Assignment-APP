@@ -1,16 +1,18 @@
-<h2>Assignment Details</h2>
+<div class="card shadow p-4" style="max-width: 600px; margin: auto;">
+  <h2 class="mb-4">Assignment Details</h2>
 
-@if (assignment) {
-  <div>
-    <p><strong>ID:</strong> {{ assignment.id }}</p>
-    <p><strong>Title:</strong> {{ assignment.title }}</p>
-    <p><strong>Description:</strong> {{ assignment.description || 'No description' }}</p>
-    <p><strong>Due Date:</strong> {{ assignment.dueDate }}</p>
-    <p><strong>Status:</strong> {{ assignment.status }}</p>
-    <p><strong>Priority:</strong> {{ assignment.priority || 'Not set' }}</p>
-  </div>
-} @else {
-  <p>No assignment selected.</p>
-}
+  @if (assignment) {
+    <ul class="list-group list-group-flush mb-4">
+      <li class="list-group-item"><strong>ID:</strong> {{ assignment.id }}</li>
+      <li class="list-group-item"><strong>Title:</strong> {{ assignment.title }}</li>
+      <li class="list-group-item"><strong>Description:</strong> {{ assignment.description || 'No description' }}</li>
+      <li class="list-group-item"><strong>Due Date:</strong> {{ assignment.dueDate }}</li>
+      <li class="list-group-item"><strong>Status:</strong> {{ assignment.status }}</li>
+      <li class="list-group-item"><strong>Priority:</strong> {{ assignment.priority || 'Not set' }}</li>
+    </ul>
+  } @else {
+    <div class="alert alert-warning">No assignment selected.</div>
+  }
 
-<button (click)="onBack()"> Back to List</button>
+  <button class="btn btn-secondary" (click)="onBack()">← Back to List</button>
+</div>

@@ -1,37 +1,51 @@
-<h2>Assignments List</h2>
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2>Assignments List</h2>
+  <button class="btn btn-primary" (click)="onAddNew()">+ Add New Assignment</button>
+</div>
 
-<button (click)="onAddNew()">+ Add New Assignment </button>
-
-<table class="table" >
-<thead>
-   <tr>
+<table class="table table-bordered table-hover table-striped">
+  <thead class="table-dark">
+    <tr>
       <th>ID</th>
       <th>Title</th>
       <th>Due Date</th>
       <th>Status</th>
       <th>Priority</th>
       <th>Actions</th>
-   </tr>
-</thead>
-<tbody>
-   @for (assignment of assignments ; track assignment.id){
+    </tr>
+  </thead>
+  <tbody>
+    @for (assignment of assignments; track assignment.id) {
       <tr>
-         <td>{{assignment.id}}</td>
-         <td>{{assignment.title}}</td>
-         <td>{{assignment.dueDate | date:'shortDate'}}</td>
-         <td>{{assignment.status}}</td>
-         <td>{{assignment.priority || 'Not set '}}</td>
-         <td>
-            <button (click)="onViewDetails(assignment)">View Details</button>
-            <button (click)="onViewUpdate(assignment)" >Edit</button>
-            <button (click)="onDelete(assignment.id)">Delete</button>
-
-         </td>
+        <td>{{ assignment.id }}</td>
+        <td>{{ assignment.title }}</td>
+        <td>{{ assignment.dueDate | date:'shortDate' }}</td>
+        <td>
+          <span class="badge"
+            [class.bg-warning]="assignment.status === 'Pending'"
+            [class.bg-primary]="assignment.status === 'In Progress'"
+            [class.bg-success]="assignment.status === 'Completed'">
+            {{ assignment.status }}
+          </span>
+        </td>
+        <td>
+          <span class="badge"
+            [class.bg-danger]="assignment.priority === 'High'"
+            [class.bg-warning]="assignment.priority === 'Medium'"
+            [class.bg-secondary]="assignment.priority === 'Low'">
+            {{ assignment.priority || 'Not set' }}
+          </span>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-info me-1" (click)="onViewDetails(assignment)">View</button>
+          <button class="btn btn-sm btn-warning me-1" (click)="onViewUpdate(assignment)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="onDelete(assignment.id)">Delete</button>
+        </td>
       </tr>
-   } 
-</tbody>
+    }
+  </tbody>
 </table>
 
-@if (assignments.length === 0){
-   <p>No assignments found. Please add some assignments.</p>
+@if (assignments.length === 0) {
+  <div class="alert alert-info text-center">No assignments found. Please add some.</div>
 }

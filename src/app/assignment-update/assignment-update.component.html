@@ -1,22 +1,26 @@
-<h2>Update Assignment</h2>
+<div class="card shadow p-4" style="max-width: 600px; margin: auto;">
+  <h2 class="mb-4">Update Assignment</h2>
+
+
+
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
    <div>
-      <label>Title:</label>
-      <input type="text" formControlName="title"  required/>
+      <label class="form-label">Title:</label>
+      <input type="text" class="form-control" formControlName="title"  required/>
    </div>
    <div>
-      <label>Description:</label>
-      <textarea formControlName="description" rows="3"></textarea>
-   </div>
-
-   <div>
-      <label>Due Date:</label>
-      <input type="date" formControlName="dueDate" required />
+      <label class="form-label">Description:</label>
+      <textarea class="form-control" formControlName="description" rows="3"></textarea>
    </div>
 
    <div>
-      <label>Status:</label>
-      <select formControlName="status">
+      <label class="form-label">Due Date:</label>
+      <input type="date" class="form-control" formControlName="dueDate" required />
+   </div>
+
+   <div>
+      <label class="form-label">Status:</label>
+      <select  class="form-select "formControlName="status">
          <option value="Pending">Pending</option>
          <option value="In Progress">In Progress</option>
          <option value="Completed">Completed</option>
@@ -24,13 +28,17 @@
    </div>
 
    <div>
-      <label>Priority:</label>
-      <select formControlName="priority">
+      <label class="form-label">Priority:</label>
+      <select class="form-select" formControlName="priority">
          <option value="Low">Low</option>
          <option value="Medium">Medium</option>
          <option value="High">High</option>
       </select>
    </div> 
-   <button type="submit" [disabled]="form.invalid">Update Assignment</button>
-   <button type="button" (click)="onCancel()">Cancel</button>
+     <div class="d-flex gap-2">
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Update Assignment</button>
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+  </div>
 </form>
+
+</div>

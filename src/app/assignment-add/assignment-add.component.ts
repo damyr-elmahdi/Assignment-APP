@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Assignment } from '../assignment.service';
 @Component({
-  selector: 'app-assignment-update',
+  selector: 'app-assignment-add',
   standalone: true,
   imports: [CommonModule , ReactiveFormsModule],
   templateUrl: './assignment-add.component.html'
@@ -20,7 +20,7 @@ export class AssignmentAddComponent {
       title:['',Validators.required],
       description: [''],
       dueDate: ['', Validators.required],
-      status: ['pending'],
+      status: ['Pending'],
       priority: ['Medium']
     })
   }
